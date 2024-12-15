@@ -1,0 +1,5 @@
+-keeppackagenames com.github.warren_bank.**
+
+-keep class com.github.warren_bank.** { *; }
+
+-keepattributes InnerClasses
