@@ -54,17 +54,20 @@ window.logWebViewClientObserver = window.logWebViewClientObserver || function(da
 
     var toggles = document.createElement('div');
     toggles.setAttribute('style', blockCss);
+    toggles.style.maxHeight = '5000px';
+    toggles.style.transition = 'max-height 0.25s ease';
+    toggles.style.overflowY = 'hidden';
     var toggle, toggle_item, toggle_label;
     if (true) {
       toggle = document.createElement('div');
       toggle.setAttribute('style', blockCss);
       toggle_item = document.createElement('button');
       toggle_item.checked = true;
-      toggle_item.textContent = 'Hide All';
+      toggle_item.textContent = 'Hide All Events';
       toggle_item.addEventListener('click', function(event) {
         event.preventDefault(); event.stopImmediatePropagation();
         event.target.checked = !event.target.checked;
-        event.target.textContent = event.target.checked ? 'Hide All' : 'Show All';
+        event.target.textContent = event.target.checked ? 'Hide All Events' : 'Show All Events';
         var changeEvent = new Event('change');
         var checkbox;
         for (var i=0; i < togglesList.length; i++) {
@@ -91,6 +94,24 @@ window.logWebViewClientObserver = window.logWebViewClientObserver || function(da
       toggles.appendChild(toggle);
     }
     container.appendChild(toggles);
+
+    if (true) {
+      toggle_item = document.createElement('button');
+      toggle_item.style.display = 'block';
+      toggle_item.style.position = 'absolute';
+      toggle_item.style.top = '0px';
+      toggle_item.style.right = '0px';
+      toggle_item.style.zIndex = '9999';
+      toggle_item.textContent = 'Hide Controls';
+      toggle_item.checked = true;
+      toggle_item.addEventListener('click', function(event) {
+        event.preventDefault(); event.stopImmediatePropagation();
+        event.target.checked = !event.target.checked;
+        event.target.textContent = event.target.checked ? 'Hide Controls' : 'Show Controls';
+        toggles.style.maxHeight = (event.target.checked) ? '5000px' : '0px';
+      });
+      container.appendChild(toggle_item);
+    }
   }
 
   var log = document.createElement('pre');
