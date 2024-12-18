@@ -1,4 +1,19 @@
 window.logWebViewClientObserver = window.logWebViewClientObserver || function(data) {
+  if (!document || !document.body || !document.body.childNodes || !document.body.childNodes.length || (document.readyState === 'loading')) {
+    window.logWebViewClientObserver.queue.push(data);
+    return;
+  }
+
+  if (window.logWebViewClientObserver.queue.length && !window.logWebViewClientObserver.isProcessingQueue) {
+    window.logWebViewClientObserver.isProcessingQueue = true;
+    while (window.logWebViewClientObserver.queue.length) {
+      window.logWebViewClientObserver(
+        window.logWebViewClientObserver.queue.shift()
+      );
+    }
+    window.logWebViewClientObserver.isProcessingQueue = false;
+  }
+
   var blockCss = 'display: block; margin: 0; padding: 0; width: 100%; border-style: none;';
 
   var container = document.getElementById('containerWebViewClientObserver');
@@ -17,10 +32,8 @@ window.logWebViewClientObserver = window.logWebViewClientObserver || function(da
     container.style.height = 'auto';
 //  container.style.maxHeight = '40em';
 //  container.style.overflow = 'auto';
-    if (document.body.childNodes && document.body.childNodes.length)
-      document.body.insertBefore(container, document.body.childNodes[0]);
-    else
-      document.body.appendChild(container);
+
+    document.body.insertBefore(container, document.body.childNodes[0]);
 
     var togglesList = ['onPageStarted', 'onPageFinished', 'doUpdateVisitedHistory', 'onFormResubmission', 'onReceivedClientCertRequest', 'onReceivedError', 'onReceivedHttpAuthRequest', 'onReceivedHttpError', 'onReceivedLoginRequest', 'onReceivedSslError', 'onRenderProcessGone', 'onSafeBrowsingHit', 'onScaleChanged', 'onTooManyRedirects', 'onUnhandledKeyEvent', 'shouldInterceptRequest', 'shouldOverrideKeyEvent', 'shouldOverrideUrlLoading', 'onLoadResource', 'onPageCommitVisible'];
 
@@ -90,3 +103,5 @@ window.logWebViewClientObserver = window.logWebViewClientObserver || function(da
   log.textContent = JSON.stringify(data, null, 2);
   container.appendChild(log);
 };
+
+window.logWebViewClientObserver.queue = window.logWebViewClientObserver.queue || [];
