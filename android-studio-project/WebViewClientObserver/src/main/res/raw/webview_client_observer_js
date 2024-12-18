@@ -1,0 +1,85 @@
+window.logWebViewClientObserver = window.logWebViewClientObserver || function(data) {
+  var blockCss = 'display: block; margin: 0; padding: 0; width: 100%; border-style: none;';
+  var container = document.getElementById('containerWebViewClientObserver');
+  if (!container) {
+    container = document.createElement('div');
+    container.setAttribute('id', 'containerWebViewClientObserver');
+    container.setAttribute('style', blockCss);
+    container.style.position = 'relative';
+    container.style.top = '0px';
+    container.style.left = '0px';
+    container.style.zIndex = '9999';
+    container.style.backgroundColor = 'white';
+    container.style.color = 'black';
+    container.style.fontFamily = 'monospace';
+    container.style.fontSize = '12px';
+    container.style.height = 'auto';
+//  container.style.maxHeight = '40em';
+//  container.style.overflow = 'auto';
+    if (document.body.childNodes && document.body.childNodes.length)
+      document.body.insertBefore(container, document.body.childNodes[0]);
+    else
+      document.body.appendChild(container);
+
+    var togglesList = ['onPageStarted', 'onPageFinished', 'doUpdateVisitedHistory', 'onFormResubmission', 'onReceivedClientCertRequest', 'onReceivedError', 'onReceivedHttpAuthRequest', 'onReceivedHttpError', 'onReceivedLoginRequest', 'onReceivedSslError', 'onRenderProcessGone', 'onSafeBrowsingHit', 'onScaleChanged', 'onTooManyRedirects', 'onUnhandledKeyEvent', 'shouldInterceptRequest', 'shouldOverrideKeyEvent', 'shouldOverrideUrlLoading', 'onLoadResource', 'onPageCommitVisible'];
+
+    var toggle_item_handler = function(index, event) {
+      event.preventDefault(); event.stopImmediatePropagation();
+      var display = event.target.checked ? 'block' : 'none';
+      var logs = document.querySelectorAll('#containerWebViewClientObserver pre.' + togglesList[index]);
+      for (var j=0; j < logs.length; j++) {
+        logs[j].style.display = display;
+      }
+    };
+
+    var toggles = document.createElement('div');
+    toggles.setAttribute('style', blockCss);
+    var toggle, toggle_item, toggle_label;
+    if (true) {
+      toggle = document.createElement('div');
+      toggle.setAttribute('style', blockCss);
+      toggle_item = document.createElement('button');
+      toggle_item.checked = true;
+      toggle_item.textContent = 'Hide All';
+      toggle_item.addEventListener('click', function(event) {
+        event.preventDefault(); event.stopImmediatePropagation();
+        event.target.checked = !event.target.checked;
+        event.target.textContent = event.target.checked ? 'Hide All' : 'Show All';
+        var changeEvent = new Event('change');
+        var checkbox;
+        for (var i=0; i < togglesList.length; i++) {
+          checkbox = document.getElementById('toggle_' + togglesList[i]);
+          checkbox.checked = event.target.checked;
+          checkbox.dispatchEvent(changeEvent);
+        }
+      });
+      toggle.appendChild(toggle_item);
+      toggles.appendChild(toggle);
+    }
+    for (var i=0; i < togglesList.length; i++) {
+      toggle = document.createElement('div');
+      toggle.setAttribute('style', blockCss);
+      toggle_item = document.createElement('input');
+      toggle_item.setAttribute('type', 'checkbox');
+      toggle_item.setAttribute('id', 'toggle_' + togglesList[i]);
+      toggle_item.checked = true;
+      toggle_item.addEventListener('change', toggle_item_handler.bind(null, i));
+      toggle_label = document.createElement('label');
+      toggle_label.textContent = togglesList[i];
+      toggle.appendChild(toggle_item);
+      toggle.appendChild(toggle_label);
+      toggles.appendChild(toggle);
+    }
+    container.appendChild(toggles);
+  }
+
+  var log = document.createElement('pre');
+  log.setAttribute('style', blockCss);
+  if (data && (typeof data === 'object') && data['Event'] && (typeof data['Event'] === 'string')) {
+    log.className = data['Event'];
+    log.style.display = document.getElementById('toggle_' + data['Event']).checked ? 'block' : 'none';
+  }
+  log.style.borderTop = '1px solid black';
+  log.textContent = JSON.stringify(data, null, 2);
+  container.appendChild(log);
+};

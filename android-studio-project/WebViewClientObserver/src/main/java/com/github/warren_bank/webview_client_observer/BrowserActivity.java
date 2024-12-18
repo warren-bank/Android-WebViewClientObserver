@@ -49,7 +49,7 @@ public class BrowserActivity extends Activity {
     webView.getSettings().setJavaScriptEnabled(true);
 
     webView.setWebViewClient(
-      new WebViewClientObserver()
+      new WebViewClientObserver(this)
     );
 
   }

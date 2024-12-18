@@ -1,8 +1,12 @@
 package com.github.warren_bank.webview_client_observer;
 
+import com.github.warren_bank.webview_client_observer.R;
+import com.github.warren_bank.webview_client_observer.util.ResourceHelper;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Build;
@@ -24,97 +28,15 @@ import java.security.Principal;
 import java.util.Map;
 
 public class WebViewClientObserver extends WebViewClient {
-  private static final String JAVASCRIPT_LOGGER_METHOD;
-  static {
-    StringBuffer sb = new StringBuffer();
+  private static String JAVASCRIPT_LOGGER_METHOD = null;
 
-    sb.append("window.logWebViewClientObserver = window.logWebViewClientObserver || function(data) {");
-    sb.append("  var blockCss = 'display: block; margin: 0; padding: 0; width: 100%; border-style: none;';");
-    sb.append("  var container = document.getElementById('containerWebViewClientObserver');");
-    sb.append("  if (!container) {");
-    sb.append("    container = document.createElement('div');");
-    sb.append("    container.setAttribute('id', 'containerWebViewClientObserver');");
-    sb.append("    container.setAttribute('style', blockCss);");
-    sb.append("    container.style.position = 'relative';");
-    sb.append("    container.style.top = '0px';");
-    sb.append("    container.style.left = '0px';");
-    sb.append("    container.style.zIndex = '9999';");
-    sb.append("    container.style.backgroundColor = 'white';");
-    sb.append("    container.style.color = 'black';");
-    sb.append("    container.style.fontFamily = 'monospace';");
-    sb.append("    container.style.fontSize = '12px';");
-    sb.append("    container.style.height = 'auto';");
-//  sb.append("    container.style.maxHeight = '40em';");
-//  sb.append("    container.style.overflow = 'auto';");
-    sb.append("    if (document.body.childNodes && document.body.childNodes.length)");
-    sb.append("      document.body.insertBefore(container, document.body.childNodes[0]);");
-    sb.append("    else");
-    sb.append("      document.body.appendChild(container);");
+  public WebViewClientObserver(Context context) {
+    super();
 
-    sb.append("    var togglesList = ['onPageStarted', 'onPageFinished', 'doUpdateVisitedHistory', 'onFormResubmission', 'onReceivedClientCertRequest', 'onReceivedError', 'onReceivedHttpAuthRequest', 'onReceivedHttpError', 'onReceivedLoginRequest', 'onReceivedSslError', 'onRenderProcessGone', 'onSafeBrowsingHit', 'onScaleChanged', 'onTooManyRedirects', 'onUnhandledKeyEvent', 'shouldInterceptRequest', 'shouldOverrideKeyEvent', 'shouldOverrideUrlLoading', 'onLoadResource', 'onPageCommitVisible'];");
-
-    sb.append("    var toggle_item_handler = function(index, event) {");
-    sb.append("      event.preventDefault(); event.stopImmediatePropagation();");
-    sb.append("      var display = event.target.checked ? 'block' : 'none';");
-    sb.append("      var logs = document.querySelectorAll('#containerWebViewClientObserver pre.' + togglesList[index]);");
-    sb.append("      for (var j=0; j < logs.length; j++) {");
-    sb.append("        logs[j].style.display = display;");
-    sb.append("      }");
-    sb.append("    };");
-
-    sb.append("    var toggles = document.createElement('div');");
-    sb.append("    toggles.setAttribute('style', blockCss);");
-    sb.append("    var toggle, toggle_item, toggle_label;");
-    sb.append("    if (true) {");
-    sb.append("      toggle = document.createElement('div');");
-    sb.append("      toggle.setAttribute('style', blockCss);");
-    sb.append("      toggle_item = document.createElement('button');");
-    sb.append("      toggle_item.checked = true;");
-    sb.append("      toggle_item.textContent = 'Hide All';");
-    sb.append("      toggle_item.addEventListener('click', function(event) {");
-    sb.append("        event.preventDefault(); event.stopImmediatePropagation();");
-    sb.append("        event.target.checked = !event.target.checked;");
-    sb.append("        event.target.textContent = event.target.checked ? 'Hide All' : 'Show All';");
-    sb.append("        var changeEvent = new Event('change');");
-    sb.append("        var checkbox;");
-    sb.append("        for (var i=0; i < togglesList.length; i++) {");
-    sb.append("          checkbox = document.getElementById('toggle_' + togglesList[i]);");
-    sb.append("          checkbox.checked = event.target.checked;");
-    sb.append("          checkbox.dispatchEvent(changeEvent);");
-    sb.append("        }");
-    sb.append("      });");
-    sb.append("      toggle.appendChild(toggle_item);");
-    sb.append("      toggles.appendChild(toggle);");
-    sb.append("    }");
-    sb.append("    for (var i=0; i < togglesList.length; i++) {");
-    sb.append("      toggle = document.createElement('div');");
-    sb.append("      toggle.setAttribute('style', blockCss);");
-    sb.append("      toggle_item = document.createElement('input');");
-    sb.append("      toggle_item.setAttribute('type', 'checkbox');");
-    sb.append("      toggle_item.setAttribute('id', 'toggle_' + togglesList[i]);");
-    sb.append("      toggle_item.checked = true;");
-    sb.append("      toggle_item.addEventListener('change', toggle_item_handler.bind(null, i));");
-    sb.append("      toggle_label = document.createElement('label');");
-    sb.append("      toggle_label.textContent = togglesList[i];");
-    sb.append("      toggle.appendChild(toggle_item);");
-    sb.append("      toggle.appendChild(toggle_label);");
-    sb.append("      toggles.appendChild(toggle);");
-    sb.append("    }");
-    sb.append("    container.appendChild(toggles);");
-    sb.append("  }");
-
-    sb.append("  var log = document.createElement('pre');");
-    sb.append("  log.setAttribute('style', blockCss);");
-    sb.append("  if (data && (typeof data === 'object') && data['Event'] && (typeof data['Event'] === 'string')) {");
-    sb.append("    log.className = data['Event'];");
-    sb.append("    log.style.display = document.getElementById('toggle_' + data['Event']).checked ? 'block' : 'none';");
-    sb.append("  }");
-    sb.append("  log.style.borderTop = '1px solid black';");
-    sb.append("  log.textContent = JSON.stringify(data, null, 2);");
-    sb.append("  container.appendChild(log);");
-    sb.append("};\n");
-
-    JAVASCRIPT_LOGGER_METHOD = sb.toString();
+    try {
+      JAVASCRIPT_LOGGER_METHOD = ResourceHelper.getRawStringResource(context, R.raw.webview_client_observer_js);
+    }
+    catch(Exception e) {}
   }
 
   private static void log(WebView webView, JSONObject jsonObj) throws Exception {
