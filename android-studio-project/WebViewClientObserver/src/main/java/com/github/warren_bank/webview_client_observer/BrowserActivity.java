@@ -2,11 +2,15 @@ package com.github.warren_bank.webview_client_observer;
 
 import com.github.warren_bank.webview_client_observer.R;
 import com.github.warren_bank.webview_client_observer.WebViewClientObserver;
+import com.github.warren_bank.webview_client_observer.settings.SettingsActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -53,4 +57,23 @@ public class BrowserActivity extends Activity {
     );
 
   }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.activity_browser, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem menuItem) {
+    switch(menuItem.getItemId()) {
+      case R.id.menu_settings: {
+        Intent in = new Intent(BrowserActivity.this, SettingsActivity.class);
+        startActivity(in);
+        return true;
+      }
+    }
+    return false;
+  }
+
 }

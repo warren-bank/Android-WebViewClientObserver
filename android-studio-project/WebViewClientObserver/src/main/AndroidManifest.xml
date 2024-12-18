@@ -42,5 +42,11 @@
       </intent-filter>
     </activity>
 
+    <activity
+      android:name=".settings.SettingsActivity"
+      android:label="Settings"
+      android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+      android:exported="false" />
+
   </application>
 </manifest>

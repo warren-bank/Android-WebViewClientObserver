@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory
+    android:key="settings_key"
+    android:title="WebViewClient Observer">
+
+    <CheckBoxPreference
+      android:key="onpagestarted_key"
+      android:title="onPageStarted"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onpagefinished_key"
+      android:title="onPageFinished"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="doupdatevisitedhistory_key"
+      android:title="doUpdateVisitedHistory"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onformresubmission_key"
+      android:title="onFormResubmission"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onreceivedclientcertrequest_key"
+      android:title="onReceivedClientCertRequest"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onreceivederror_key"
+      android:title="onReceivedError"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onreceivedhttpauthrequest_key"
+      android:title="onReceivedHttpAuthRequest"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onreceivedhttperror_key"
+      android:title="onReceivedHttpError"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onreceivedloginrequest_key"
+      android:title="onReceivedLoginRequest"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onreceivedsslerror_key"
+      android:title="onReceivedSslError"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onrenderprocessgone_key"
+      android:title="onRenderProcessGone"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onsafebrowsinghit_key"
+      android:title="onSafeBrowsingHit"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onscalechanged_key"
+      android:title="onScaleChanged"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="ontoomanyredirects_key"
+      android:title="onTooManyRedirects"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onunhandledkeyevent_key"
+      android:title="onUnhandledKeyEvent"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="shouldinterceptrequest_key"
+      android:title="shouldInterceptRequest"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="shouldoverridekeyevent_key"
+      android:title="shouldOverrideKeyEvent"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="shouldoverrideurlloading_key"
+      android:title="shouldOverrideUrlLoading"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onloadresource_key"
+      android:title="onLoadResource"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+    <CheckBoxPreference
+      android:key="onpagecommitvisible_key"
+      android:title="onPageCommitVisible"
+      android:summaryOn="show"
+      android:summaryOff="hide"
+      android:defaultValue="true" />
+
+  </PreferenceCategory>
+</PreferenceScreen>

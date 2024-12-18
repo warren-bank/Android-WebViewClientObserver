@@ -1,12 +1,14 @@
 package com.github.warren_bank.webview_client_observer;
 
 import com.github.warren_bank.webview_client_observer.R;
+import com.github.warren_bank.webview_client_observer.settings.SettingsUtils;
 import com.github.warren_bank.webview_client_observer.util.ResourceHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Build;
@@ -27,16 +29,28 @@ import android.webkit.WebViewClient;
 import java.security.Principal;
 import java.util.Map;
 
-public class WebViewClientObserver extends WebViewClient {
-  private static String JAVASCRIPT_LOGGER_METHOD = null;
+public class WebViewClientObserver extends WebViewClient implements SharedPreferences.OnSharedPreferenceChangeListener {
+  private static String JAVASCRIPT_LOGGER_METHOD = "";
+  private static String jsData = "";
+
+  private Context context;
 
   public WebViewClientObserver(Context context) {
     super();
+    this.context = context;
 
     try {
       JAVASCRIPT_LOGGER_METHOD = ResourceHelper.getRawStringResource(context, R.raw.webview_client_observer_js);
+
+      onSharedPreferenceChanged(null, null);
+      SettingsUtils.getPrefs(context).registerOnSharedPreferenceChangeListener(this);
     }
     catch(Exception e) {}
+  }
+
+  @Override
+  public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+    jsData = "window.logWebViewClientObserver.togglesValues = " + SettingsUtils.getTogglesValues(context).toString() + ";";
   }
 
   private static void log(WebView webView, JSONObject jsonObj) throws Exception {
@@ -60,14 +74,14 @@ public class WebViewClientObserver extends WebViewClient {
               webView.evaluateJavascript(jsCode, null);
             }
             else {
-              webView.evaluateJavascript(JAVASCRIPT_LOGGER_METHOD + jsCode, null);
+              webView.evaluateJavascript(JAVASCRIPT_LOGGER_METHOD + jsData + jsCode, null);
             }
           }
         }
       );
     }
     else {
-      webView.loadUrl("javascript:" + JAVASCRIPT_LOGGER_METHOD + jsCode);
+      webView.loadUrl("javascript:" + JAVASCRIPT_LOGGER_METHOD + jsData + jsCode);
     }
   }
 
