@@ -7,6 +7,7 @@ import com.github.warren_bank.webview_client_observer.settings.SettingsActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -70,6 +71,14 @@ public class BrowserActivity extends Activity {
       case R.id.menu_settings: {
         Intent in = new Intent(BrowserActivity.this, SettingsActivity.class);
         startActivity(in);
+        return true;
+      }
+      case R.id.menu_exit: {
+        if (Build.VERSION.SDK_INT >= 21)
+          finishAndRemoveTask();
+        else
+          finish();
+
         return true;
       }
     }
