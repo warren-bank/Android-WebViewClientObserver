@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
   <PreferenceCategory
     android:key="settings_key"
-    android:title="WebViewClient Observer">
+    android:title="@string/app_name">
 
     <CheckBoxPreference
       android:key="onpagestarted_key"

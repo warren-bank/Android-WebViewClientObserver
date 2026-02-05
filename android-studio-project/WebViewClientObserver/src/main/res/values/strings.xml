@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Observer</string>
+
+  <string name="activity_browser_name">@string/app_name</string>
+  <string name="activity_settings_name">Settings</string>
+
+  <!-- Menu -->
+  <string name="menu_settings">@string/activity_settings_name</string>
+  <string name="menu_exit">Exit</string>
+
+  <!-- Settings -->
+  <string name="toast_settings_requires_api_11">Android 3.0 or higher is required to edit the app settings</string>
+</resources>

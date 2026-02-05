@@ -1,5 +1,7 @@
 package com.github.warren_bank.webview_client_observer.settings;
 
+import com.github.warren_bank.webview_client_observer.R;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -16,7 +18,7 @@ public class SettingsActivity extends PreferenceActivity {
     else {
       Toast.makeText(
         SettingsActivity.this,
-        "Android 3.0 or higher is required to edit the app settings",
+        getString(R.string.toast_settings_requires_api_11),
         Toast.LENGTH_SHORT
       ).show();
 
