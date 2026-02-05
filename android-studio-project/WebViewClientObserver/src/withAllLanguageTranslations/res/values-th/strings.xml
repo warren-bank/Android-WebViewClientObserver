@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient ผู้สังเกตการณ์</string>
+  <string name="activity_settings_name">การตั้งค่า</string>
+  <string name="menu_exit">ทางออก</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 หรือสูงกว่า จำเป็นต้องมีเพื่อแก้ไขการตั้งค่าแอป</string>
+</resources>

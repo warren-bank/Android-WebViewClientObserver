@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Pozorovateľ</string>
+  <string name="activity_settings_name">Nastavenia</string>
+  <string name="menu_exit">Výstup</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 alebo vyššia verzia je potrebná na úpravu nastavení aplikácie</string>
+</resources>

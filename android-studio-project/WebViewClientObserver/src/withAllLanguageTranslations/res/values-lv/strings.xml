@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Novērotājs</string>
+  <string name="activity_settings_name">Iestatījumi</string>
+  <string name="menu_exit">Izlīšana</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 vai augstāka versija ir nepieciešama, lai rediģētu lietotnes iestatījumus</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Παρατηρητής</string>
+  <string name="activity_settings_name">Ρυθμίσεις</string>
+  <string name="menu_exit">Έξοδος</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 ή υψηλότερη έκδοση απαιτείται για την επεξεργασία των ρυθμίσεων της εφαρμογής</string>
+</resources>

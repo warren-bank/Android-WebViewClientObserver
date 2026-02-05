@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Observateur</string>
+  <string name="activity_settings_name">Paramètres</string>
+  <string name="menu_exit">Sortie</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 ou supérieur est requis pour modifier les paramètres de l\'application.</string>
+</resources>

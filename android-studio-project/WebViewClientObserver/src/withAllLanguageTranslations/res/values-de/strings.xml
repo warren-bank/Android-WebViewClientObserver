@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Beobachter</string>
+  <string name="activity_settings_name">Einstellungen</string>
+  <string name="menu_exit">Ausgang</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 oder höher ist erforderlich, um die App-Einstellungen zu bearbeiten.</string>
+</resources>

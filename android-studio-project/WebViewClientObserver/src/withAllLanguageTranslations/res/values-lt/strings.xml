@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Stebėtojas</string>
+  <string name="activity_settings_name">Nustatymai</string>
+  <string name="menu_exit">Išeiti</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 arba aukštesnė versija reikalinga norint redaguoti programos nustatymus</string>
+</resources>

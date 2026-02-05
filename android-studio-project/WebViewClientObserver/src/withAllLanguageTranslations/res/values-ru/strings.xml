@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Наблюдатель</string>
+  <string name="activity_settings_name">Настройки</string>
+  <string name="menu_exit">Выход</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 или выше требуется для редактирования настроек приложения</string>
+</resources>

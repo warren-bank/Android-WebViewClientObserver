@@ -1,0 +1,12 @@
+{
+  "name": "@warren-bank/Android-WebViewClientObserver",
+  "private": true,
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "@warren-bank/translate-android-strings": "^3.0.1"
+  },
+  "scripts": {
+    "translate":       "translate-android-strings -s \"deepl\" -i \"en\" -f \"android-studio-project/WebViewClientObserver/src/main/res/values/strings.xml\" -d \"android-studio-project/WebViewClientObserver/src/withAllLanguageTranslations/res\" -m --nc --nw -b \"(?:WebViewClient|Android|\\d+\\.\\d+)\"",
+    "translate:debug": "npm run translate -- -o \"en\" --debug"
+  }
+}

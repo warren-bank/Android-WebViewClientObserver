@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Tarkkailija</string>
+  <string name="activity_settings_name">Asetukset</string>
+  <string name="menu_exit">Poistu</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 tai uudempi versio on tarpeen sovelluksen asetusten muokkaamiseen</string>
+</resources>

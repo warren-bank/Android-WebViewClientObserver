@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient צופה</string>
+  <string name="activity_settings_name">הגדרות</string>
+  <string name="menu_exit">יציאה</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 או גרסה גבוהה יותר נדרשת כדי לערוך את הגדרות האפליקציה</string>
+</resources>

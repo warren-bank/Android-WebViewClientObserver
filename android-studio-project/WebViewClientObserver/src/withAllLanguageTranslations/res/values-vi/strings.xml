@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Người quan sát</string>
+  <string name="activity_settings_name">Cài đặt</string>
+  <string name="menu_exit">Thoát</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 Hoặc phiên bản cao hơn là yêu cầu để chỉnh sửa cài đặt ứng dụng.</string>
+</resources>

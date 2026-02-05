@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient المراقب</string>
+  <string name="activity_settings_name">الإعدادات</string>
+  <string name="menu_exit">خروج</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 أو أعلى مطلوب لتحرير إعدادات التطبيق</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient オブザーバー</string>
+  <string name="activity_settings_name">設定</string>
+  <string name="menu_exit">出口</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 アプリ設定を編集するには、バージョンがこれより高いものが必要です</string>
+</resources>

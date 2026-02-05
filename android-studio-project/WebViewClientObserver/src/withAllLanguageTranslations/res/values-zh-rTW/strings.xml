@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient 觀察者</string>
+  <string name="activity_settings_name">設定</string>
+  <string name="menu_exit">退出</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 需具備更高權限方可編輯應用程式設定</string>
+</resources>

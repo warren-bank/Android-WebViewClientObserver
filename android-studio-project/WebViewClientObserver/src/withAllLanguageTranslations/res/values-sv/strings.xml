@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">WebViewClient Observatör</string>
+  <string name="activity_settings_name">Inställningar</string>
+  <string name="menu_exit">Avsluta</string>
+  <string name="toast_settings_requires_api_11">Android 3.0 eller högre krävs för att redigera appinställningarna</string>
+</resources>
